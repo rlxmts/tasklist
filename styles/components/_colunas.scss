@@ -10,6 +10,25 @@
         @include mixins.coluna(variaveis.$azul);
         h5{
             @include mixins.titulo(variaveis.$azul-escuro);
+            margin-bottom: 1rem;
+        }
+        ul{
+            @include mixins.flex-jc-alg( start, start);
+            flex-direction: column;
+            gap: .5rem;
+            li{
+                text-align: start;
+                background-color: variaveis.$branco;
+                padding: 1rem;
+                width: 100%;
+                border-radius: 10px;
+                cursor: grab;
+
+                p{
+                    font-weight: 600;
+                    color: variaveis.$azul-escuro;
+                }
+            }
         }
         
     }

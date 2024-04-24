@@ -11,7 +11,7 @@
 .cabecalho {
   padding: 1rem;
   text-align: center;
-  border-bottom: 3px solid #457fb1;
+  border-bottom: 3px solid #24659e;
   height: 8rem;
   z-index: 99999999;
   background-color: #FFF;
@@ -19,7 +19,7 @@
 }
 .cabecalho h1 {
   font-size: 2rem;
-  color: #457fb1;
+  color: #24659e;
 }
 .cabecalho h1 span {
   font-size: 3rem;
@@ -49,7 +49,7 @@
 }
 .cabecalho div p a {
   font-size: 0.6rem;
-  color: #457fb1;
+  color: #24659e;
 }
 
 .formulario {
@@ -61,7 +61,7 @@
   margin: 0 auto;
   width: 100%;
   background-color: #c4e6f5;
-  border-bottom: 2px solid #457fb1;
+  border-bottom: 2px solid #24659e;
   display: flex;
   gap: 1rem;
   justify-content: start;
@@ -71,16 +71,16 @@
 .formulario h5 {
   font-size: 1.5rem;
   font-weight: 400;
-  color: #457fb1;
+  color: #24659e;
 }
 .formulario textarea {
   max-width: 99%;
   height: 20rem;
-  border: 1px solid #457fb1;
+  border: 1px solid #24659e;
   padding: 1rem;
 }
 .formulario button {
-  background-color: #457fb1;
+  background-color: #24659e;
   color: #FFF;
   padding: 0.3rem 2rem;
   border: none;
@@ -114,10 +114,31 @@
   max-width: 400px;
 }
 .colunas .tarefa_pendente h5 {
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.5rem;
-  color: #457fb1;
+  color: #24659e;
   font-weight: 800;
+  margin-bottom: 1rem;
+}
+.colunas .tarefa_pendente ul {
+  display: flex;
+  gap: 1rem;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.colunas .tarefa_pendente ul li {
+  text-align: start;
+  background-color: #FFF;
+  padding: 1rem;
+  width: 100%;
+  border-radius: 10px;
+  cursor: grab;
+}
+.colunas .tarefa_pendente ul li p {
+  font-weight: 600;
+  color: #24659e;
 }
 .colunas .tarefa_andamento {
   flex-grow: 1;
@@ -127,7 +148,7 @@
   text-align: center;
   border-radius: 10px;
   max-width: 400px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.5rem;
   color: #695bad;
   font-weight: 800;
@@ -140,7 +161,7 @@
   text-align: center;
   border-radius: 10px;
   max-width: 400px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.5rem;
   color: #c39d6b;
   font-weight: 800;

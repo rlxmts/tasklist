@@ -13,6 +13,7 @@ btAddTarefa.addEventListener('click', ()=> {
 
 function criarTarefa(tarefa){
     const li = document.createElement('li');
+    li.setAttribute('draggable', 'true');
     const paragrafo = document.createElement('p');
     paragrafo.textContent = tarefa.descricao;
     li.append(paragrafo);
@@ -43,6 +44,8 @@ btFormulario.addEventListener('click', ()=> {
 })
 
 tarefa.forEach(element => {
-    const tarefasCriada = criarTarefa(element);
-    listaTarefaPendente.append(tarefasCriada);
+    if(element.status == 'pendente'){
+        const tarefasCriada = criarTarefa(element);
+        listaTarefaPendente.append(tarefasCriada);
+    }
 });
