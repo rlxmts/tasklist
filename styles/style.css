@@ -135,10 +135,45 @@
   width: 100%;
   border-radius: 10px;
   cursor: grab;
+  display: flex;
+  gap: 1rem;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
 }
 .colunas .tarefa_pendente ul li p {
   font-weight: 600;
   color: #24659e;
+}
+.colunas .tarefa_pendente ul li div {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.colunas .tarefa_pendente ul li div button {
+  padding: 0.3rem 1rem;
+  font-size: 0.7rem;
+  border-radius: 10px;
+  border: 1px solid #24659e;
+  background-color: #FFF;
+  color: #24659e;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.colunas .tarefa_pendente ul li div button:hover {
+  background-color: #24659e;
+  color: #FFF;
+}
+.colunas .tarefa_pendente ul li div svg {
+  width: 25px;
+  cursor: pointer;
+  fill: #24659e;
+  transition: 0.5s;
+}
+.colunas .tarefa_pendente ul li div svg:hover {
+  fill: #ad5252;
 }
 .colunas .tarefa_andamento {
   flex-grow: 1;

@@ -23,10 +23,38 @@
                 width: 100%;
                 border-radius: 10px;
                 cursor: grab;
-
+                @include mixins.flex-jc-alg(start, start);
+                flex-direction: column;
                 p{
                     font-weight: 600;
                     color: variaveis.$azul-escuro;
+                }
+                div{
+                    width: 100%;
+                    @include mixins.flex-jc-alg(space-between, center);
+                    button{
+                        padding: .3rem 1rem;
+                        font-size: .7rem;
+                        border-radius: 10px;
+                        border: 1px solid variaveis.$azul-escuro;
+                        background-color: variaveis.$branco;
+                        color: variaveis.$azul-escuro;
+                        cursor: pointer;
+                        transition: .5s;
+                        &:hover{
+                            background-color: variaveis.$azul-escuro;
+                            color: variaveis.$branco;
+                        }
+                    }
+                    svg{
+                        width: 25px;
+                        cursor: pointer;
+                        fill: variaveis.$azul-escuro;
+                        transition: .5s;
+                        &:hover{
+                            fill: variaveis.$vermelho-escuro;
+                        }
+                    }
                 }
             }
         }
