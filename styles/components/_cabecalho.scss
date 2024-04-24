@@ -1,0 +1,46 @@
+@use '../abstract/variaveis';
+@use '../abstract/mixins';
+
+.cabecalho{
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 3px solid variaveis.$azul-escuro;
+    height: 8rem;
+    z-index: 99999999;
+    background-color: variaveis.$branco;
+    position: relative;
+    h1{
+        font-size: 2rem;
+        color: variaveis.$azul-escuro;
+
+        span{
+            font-size: 3rem;
+            color: variaveis.$vermelho;
+        }
+    }
+    div{
+        @include mixins.flex-jc-alg(space-between, center);
+        button{
+            @extend div;
+            gap: 5px;
+            border: none;
+            background-color: transparent;
+            width: 25px;
+            height: 25px;
+            position: relative;
+            color: variaveis.$vermelho;
+            img{
+                width: 100%;
+            }
+        }
+        p{
+            font-weight: 500;
+            font-size: .6rem;
+            a{
+                font-size: .6rem;
+                color: variaveis.$azul-escuro;
+            }
+        }
+    }
+    
+}

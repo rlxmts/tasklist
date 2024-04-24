@@ -1,0 +1,26 @@
+@use '../abstract/variaveis';
+@use '../abstract/mixins';
+
+.colunas {
+    @include mixins.flex-jc-alg(center, start);
+    padding: 1rem;
+    flex-wrap: wrap;
+    .tarefa_pendente{
+        flex-grow: 1;
+        @include mixins.coluna(variaveis.$azul);
+        h5{
+            @include mixins.titulo(variaveis.$azul-escuro);
+        }
+        
+    }
+    .tarefa_andamento{
+        flex-grow: 1;
+        @include mixins.coluna(variaveis.$lilas);
+        @include mixins.titulo(variaveis.$lilas-escuro);
+    }
+    .tarefa_finalizada{
+        flex-grow: 1;
+        @include mixins.coluna(variaveis.$amarelo);
+        @include mixins.titulo(variaveis.$amarelo-escuro);
+    }
+}

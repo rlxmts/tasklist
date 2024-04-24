@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="index.js" defer></script>
+    <title>Praticando LocalStorage</title>
+</head>
+<body>
+    <main>
+        <header class="cabecalho">
+            <h1>Dev<span>.</span>Tarefas</h1>
+            <div>
+                <button class="botao_add_tarefa" id="bt-add-tarefa">+Add
+                    <img class="img_add" src="./img/add.png" alt="adicionar nova tarefa.">
+                </button>
+                <p>*Veja o repositório 
+                    <a target="_blank" href="https://github.com/rlxmts/devtarefa">aqui.</a>
+                </p>
+            </div>
+        </header>
+        <section class="formulario">
+            <h5>Qual tarefa temos pra hoje?</h5>
+            <textarea id="campo-texto-tarefa" cols="300" rows="10" placeholder="Digite aqui sua tarefa..."></textarea>
+            <button id="bt-form">+ Tarefa</button>            
+        </section>
+        <section class="colunas">
+            <div class="coluna_tarefas tarefa_pendente">
+                <h5>Tarefas Pendentes</h5>
+            </div>
+            <div class="coluna_tarefas tarefa_andamento">
+                <h5>Tarefas em Andamento</h5>
+            </div>
+            <div class="coluna_tarefas tarefa_finalizada">
+                <h5>Tarefas concluídas</h5>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+@mixin flex-jc-alg($js, $alinhamento){
+    display: flex;
+    gap: 1rem;
+    justify-content: $js;
+    align-items: $alinhamento;
+}
+
+@mixin coluna($cor){
+    background-color: $cor;
+    min-height: 20rem;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 10px;
+    max-width: 400px;
+}
+
+@mixin titulo($cor){
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: $cor;
+    font-weight: 800;
+}
