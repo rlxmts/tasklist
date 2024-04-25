@@ -253,7 +253,7 @@
 }
 .colunas .tarefa_finalizada {
   flex-grow: 1;
-  background-color: #ece1c9;
+  background-color: #f1bfbd;
   min-height: 20rem;
   padding: 1rem;
   text-align: center;
@@ -263,7 +263,7 @@
 .colunas .tarefa_finalizada h5 {
   font-size: 1.2rem;
   line-height: 1.5rem;
-  color: #c39d6b;
+  color: #ad5252;
   font-weight: 800;
   margin-bottom: 1rem;
 }
@@ -286,38 +286,28 @@
   flex-direction: column;
   display: flex;
   gap: 1rem;
-  justify-content: start;
-  align-items: start;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
 }
 .colunas .tarefa_finalizada ul li p {
   font-weight: 600;
-  color: #c39d6b;
+  color: #ad5252;
+  text-decoration: line-through;
 }
 .colunas .tarefa_finalizada ul li div {
-  width: 100%;
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-  align-items: center;
+  width: 20px;
+  height: 30px;
+  right: 1.4rem;
 }
 .colunas .tarefa_finalizada ul li div button {
-  padding: 0.3rem 1rem;
-  font-size: 0.7rem;
-  border-radius: 10px;
-  border: 1px solid #c39d6b;
-  background-color: #FFF;
-  color: #c39d6b;
-  cursor: pointer;
-  transition: 0.5s;
-}
-.colunas .tarefa_finalizada ul li div button:hover {
-  background-color: #c39d6b;
-  color: #FFF;
+  display: none;
 }
 .colunas .tarefa_finalizada ul li div svg {
   width: 25px;
   cursor: pointer;
-  fill: #c39d6b;
+  fill: #ad5252;
   transition: 0.3s;
 }
 .colunas .tarefa_finalizada ul li div svg:hover {

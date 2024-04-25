@@ -3,9 +3,11 @@ const formulario = document.querySelector('.formulario');
 const btFormulario = document.querySelector('#bt-form');
 const formularioCampo = document.querySelector('#campo-texto-tarefa');
 const listaTarefaPendente = document.querySelector('.lista_tarefas_pendentes');
+const listaTarefaAndamento = document.querySelector('.lista_tarefas_andamento');
+const listaTarefaFinalizada = document.querySelector('.lista_tarefas_finalizadas');
 
 let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
-
+let tarefaAndamento = JSON.parse(localStorage.getItem('tarefaPendente')) || [];
 //ADICIONANDO E REMOVENDO A CLASSE "ATIVO" DO FORMULARIO DE NOVA TAREFA.
 btAddTarefa.addEventListener('click', ()=> {
     formulario.classList.toggle('ativo');    
@@ -83,3 +85,7 @@ tarefas.forEach(element => {
     }
 });
 
+listaTarefaAndamento.addEventListener('dragend', ()=> {
+    const textoDaTarefa = listaTarefaAndamento.querySelector('li p');
+    
+})

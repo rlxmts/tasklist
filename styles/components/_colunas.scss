@@ -87,9 +87,9 @@
     }
     .tarefa_finalizada{
         flex-grow: 1;
-        @include mixins.coluna(variaveis.$amarelo);
+        @include mixins.coluna(variaveis.$vermelho);
         h5{
-            @include mixins.titulo(variaveis.$amarelo-escuro);
+            @include mixins.titulo(variaveis.$vermelho-escuro);
         }
         ul{
             @include mixins.flex-jc-alg( start, start);
@@ -97,26 +97,24 @@
 
             li{
                 @include mixins.item-bg(variaveis.$branco);
-                @include mixins.flex-jc-alg(start, start);
-
+                @include mixins.flex-jc-alg(center,center);
+                flex-direction: row;
+                position: relative;
                 p{
-                    @include mixins.paragrafo-color(variaveis.$amarelo-escuro);
+                    @include mixins.paragrafo-color(variaveis.$vermelho-escuro);
+                    text-decoration: line-through;
                 }
-                div{
-                    width: 100%;
-                    @include mixins.flex-jc-alg(space-between, center);
-
+                div{                    
+                    width: 20px;
+                    height: 30px;
+                    right: 1.4rem;
                     button{
-                        @include mixins.botao-bd-bg-cl(variaveis.$amarelo-escuro, variaveis.$branco, variaveis.$amarelo-escuro);
-                        &:hover{
-                            background-color: variaveis.$amarelo-escuro;
-                            color: variaveis.$branco;
-                        }
+                        display: none;
                     }
                     svg{
                         width: 25px;
                         cursor: pointer;
-                        fill: variaveis.$amarelo-escuro;
+                        fill: variaveis.$vermelho-escuro;
                         transition: .3s;
                         &:hover{
                             fill: variaveis.$vermelho-escuro;
