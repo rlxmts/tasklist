@@ -12,7 +12,6 @@
   padding: 1rem;
   text-align: center;
   border-bottom: 3px solid #24659e;
-  height: 8rem;
   z-index: 99999999;
   background-color: #FFF;
   position: relative;
@@ -25,23 +24,26 @@
   font-size: 3rem;
   color: #f1bfbd;
 }
-.cabecalho div, .cabecalho div button {
+.cabecalho div {
   display: flex;
   gap: 1rem;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
 }
 .cabecalho div button {
-  gap: 5px;
-  border: none;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
   background-color: transparent;
-  width: 18px;
-  height: 18px;
-  position: relative;
-  color: #f1bfbd;
+  border: 1px solid #24659e;
+  border-radius: 20px;
+  color: #24659e;
 }
 .cabecalho div button img {
-  width: 100%;
+  width: 18px;
 }
 .cabecalho div p {
   font-weight: 500;

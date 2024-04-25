@@ -4,8 +4,7 @@
 .cabecalho{
     padding: 1rem;
     text-align: center;
-    border-bottom: 3px solid variaveis.$azul-escuro;
-    height: 8rem;
+    border-bottom: 3px solid variaveis.$azul-escuro;    
     z-index: 99999999;
     background-color: variaveis.$branco;
     position: relative;
@@ -20,17 +19,16 @@
     }
     div{
         @include mixins.flex-jc-alg(space-between, center);
+        flex-direction: column;
         button{
-            @extend div;
-            gap: 5px;
-            border: none;
+            @include mixins.flex-jc-alg(space-between, center);
+            padding: .5rem 1rem;
             background-color: transparent;
-            width: 18px;
-            height: 18px;
-            position: relative;
-            color: variaveis.$vermelho;
+            border: 1px solid variaveis.$azul-escuro;
+            border-radius: 20px;
+            color: variaveis.$azul-escuro;
             img{
-                width: 100%;
+                width: 18px;
             }
         }
         p{
