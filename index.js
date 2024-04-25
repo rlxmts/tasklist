@@ -4,14 +4,14 @@ const btFormulario = document.querySelector('#bt-form');
 const formularioCampo = document.querySelector('#campo-texto-tarefa');
 const listaTarefaPendente = document.querySelector('.lista_tarefas_pendentes');
 
-let tarefa = JSON.parse(localStorage.getItem('tarefa')) || [];
+let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
 
 //ADICIONANDO E REMOVENDO A CLASSE "ATIVO" DO FORMULARIO DE NOVA TAREFA.
 btAddTarefa.addEventListener('click', ()=> {
     formulario.classList.toggle('ativo');    
 })
 function atualizaFuncao(){
-    localStorage.setItem('tarefa', JSON.stringify(tarefa))
+    localStorage.setItem('tarefas', JSON.stringify(tarefas))
 }
 
 function criarTarefa(tarefa){
@@ -26,7 +26,9 @@ function criarTarefa(tarefa){
     svg.innerHTML = `<svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path  d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM152 232H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg>`;
 
     svg.onclick = ()=> {
+        tarefa.excluir = true;
         li.remove();
+        tarefas = tarefas.filter(tarefa => !tarefa.excluir) ;
         atualizaFuncao();
     }
 
@@ -46,7 +48,7 @@ btFormulario.addEventListener('click', ()=> {
             descricao : formularioCampo.value,
             status : 'pendente'
         }
-        tarefa.push(novaTarefa);
+        tarefas.push(novaTarefa);
         
         const tarefaPendente = criarTarefa(novaTarefa);
         listaTarefaPendente.append(tarefaPendente);
@@ -60,7 +62,7 @@ btFormulario.addEventListener('click', ()=> {
     }
 })
 
-tarefa.forEach(element => {
+tarefas.forEach(element => {
     if(element.status == 'pendente'){
         const tarefasCriada = criarTarefa(element);
         listaTarefaPendente.append(tarefasCriada);
