@@ -22,7 +22,7 @@
 }
 .cabecalho h1 span {
   font-size: 3rem;
-  color: #f1bfbd;
+  color: #695bad;
 }
 .cabecalho div {
   display: flex;
@@ -62,8 +62,8 @@
   opacity: 0;
   margin: 0 auto;
   width: 100%;
-  background-color: #c4e6f5;
-  border-bottom: 2px solid #24659e;
+  background-color: #ccc5f5;
+  border-bottom: 2px solid #695bad;
   display: flex;
   gap: 1rem;
   justify-content: start;
@@ -73,16 +73,17 @@
 .formulario h5 {
   font-size: 1.5rem;
   font-weight: 400;
-  color: #24659e;
+  color: #695bad;
 }
 .formulario textarea {
   max-width: 99%;
   height: 20rem;
-  border: 1px solid #24659e;
+  border: 1px solid #695bad;
   padding: 1rem;
+  border-radius: 10px;
 }
 .formulario button {
-  background-color: #24659e;
+  background-color: #695bad;
   color: #FFF;
   padding: 0.3rem 2rem;
   border: none;
