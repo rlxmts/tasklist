@@ -10,13 +10,17 @@ let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
 btAddTarefa.addEventListener('click', ()=> {
     formulario.classList.toggle('ativo');    
 })
+
+//ESSA FUNÇÃO NA VERDADE ATUALIZA A LISTA DE TAREFAS NO LOCALSTORAGE SEM QUE INVOCADA. 
 function atualizaFuncao(){
     localStorage.setItem('tarefas', JSON.stringify(tarefas))
 }
 
+//ESSA FUNÇÃO CRIA O ITEM DA LISTA DE TAREFAS EM 'TAREAS PENDENTES', EXCLUI TAREFA SELECIONADA E EDITA;
 function criarTarefa(tarefa){
     const li = document.createElement('li');
     li.setAttribute('draggable', 'true');
+    li.classList.add('DragDropTouch');
     const paragrafo = document.createElement('p');
     paragrafo.textContent = tarefa.descricao;
     const div = document.createElement('div');
@@ -32,6 +36,16 @@ function criarTarefa(tarefa){
         atualizaFuncao();
     }
 
+    botao.onclick = ()=> {
+        const tarefaEditada = prompt('Qual o novo nome da tarefa?');
+        if(tarefaEditada){
+            paragrafo.textContent = tarefaEditada;
+            tarefa.descricao = tarefaEditada;
+            atualizaFuncao();
+        }else{
+            alert('digite algo.')
+        }
+    }
 
     div.append(botao);
     div.append(svg);

@@ -10,37 +10,21 @@
         @include mixins.coluna(variaveis.$azul);
         h5{
             @include mixins.titulo(variaveis.$azul-escuro);
-            margin-bottom: 1rem;
         }
         ul{
             @include mixins.flex-jc-alg( start, start);
-            flex-direction: column;
-            gap: .5rem;
+            @include mixins.lista();
             li{
-                text-align: start;
-                background-color: variaveis.$branco;
-                padding: 1rem;
-                width: 100%;
-                border-radius: 10px;
-                cursor: grab;
+                @include mixins.item-bg(variaveis.$branco);
                 @include mixins.flex-jc-alg(start, start);
-                flex-direction: column;
                 p{
-                    font-weight: 600;
-                    color: variaveis.$azul-escuro;
+                    @include mixins.paragrafo-color(variaveis.$azul-escuro);
                 }
                 div{
                     width: 100%;
                     @include mixins.flex-jc-alg(space-between, center);
                     button{
-                        padding: .3rem 1rem;
-                        font-size: .7rem;
-                        border-radius: 10px;
-                        border: 1px solid variaveis.$azul-escuro;
-                        background-color: variaveis.$branco;
-                        color: variaveis.$azul-escuro;
-                        cursor: pointer;
-                        transition: .5s;
+                        @include mixins.botao-bd-bg-cl(variaveis.$azul-escuro, variaveis.$branco, variaveis.$azul-escuro);
                         &:hover{
                             background-color: variaveis.$azul-escuro;
                             color: variaveis.$branco;
@@ -63,11 +47,83 @@
     .tarefa_andamento{
         flex-grow: 1;
         @include mixins.coluna(variaveis.$lilas);
-        @include mixins.titulo(variaveis.$lilas-escuro);
+        h5{
+            @include mixins.titulo(variaveis.$lilas-escuro);
+        }
+        ul{
+            @include mixins.flex-jc-alg( start, start);
+            @include mixins.lista();
+
+            li{
+                @include mixins.item-bg(variaveis.$branco);
+                @include mixins.flex-jc-alg(start, start);
+
+                p{
+                    @include mixins.paragrafo-color(variaveis.$lilas-escuro);
+                }
+                div{
+                    width: 100%;
+                    @include mixins.flex-jc-alg(space-between, center);
+
+                    button{
+                        @include mixins.botao-bd-bg-cl(variaveis.$lilas-escuro, variaveis.$branco, variaveis.$lilas-escuro);
+                        &:hover{
+                            background-color: variaveis.$lilas-escuro;
+                            color: variaveis.$branco;
+                        }
+                    }
+                    svg{
+                        width: 25px;
+                        cursor: pointer;
+                        fill: variaveis.$lilas-escuro;
+                        transition: .3s;
+                        &:hover{
+                            fill: variaveis.$vermelho-escuro;
+                        }
+                    }
+                }
+            }
+        }
     }
     .tarefa_finalizada{
         flex-grow: 1;
         @include mixins.coluna(variaveis.$amarelo);
-        @include mixins.titulo(variaveis.$amarelo-escuro);
+        h5{
+            @include mixins.titulo(variaveis.$amarelo-escuro);
+        }
+        ul{
+            @include mixins.flex-jc-alg( start, start);
+            @include mixins.lista();
+
+            li{
+                @include mixins.item-bg(variaveis.$branco);
+                @include mixins.flex-jc-alg(start, start);
+
+                p{
+                    @include mixins.paragrafo-color(variaveis.$amarelo-escuro);
+                }
+                div{
+                    width: 100%;
+                    @include mixins.flex-jc-alg(space-between, center);
+
+                    button{
+                        @include mixins.botao-bd-bg-cl(variaveis.$amarelo-escuro, variaveis.$branco, variaveis.$amarelo-escuro);
+                        &:hover{
+                            background-color: variaveis.$amarelo-escuro;
+                            color: variaveis.$branco;
+                        }
+                    }
+                    svg{
+                        width: 25px;
+                        cursor: pointer;
+                        fill: variaveis.$amarelo-escuro;
+                        transition: .3s;
+                        &:hover{
+                            fill: variaveis.$vermelho-escuro;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
