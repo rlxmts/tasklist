@@ -1,5 +1,5 @@
 const caixasDraggble= document.querySelectorAll('.caixa-draggable');
-console.log(caixasDraggble);
+
 
 document.addEventListener('dragstart', (e)=> {
     e.target.classList.add('arrastando');
