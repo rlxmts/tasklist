@@ -173,7 +173,7 @@
   width: 25px;
   cursor: pointer;
   fill: #24659e;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 .colunas .tarefa_pendente ul li div svg:hover {
   fill: #ad5252;
