@@ -5,9 +5,9 @@ const formularioCampo = document.querySelector('#campo-texto-tarefa');
 const listaTarefaPendente = document.querySelector('.lista_tarefas_pendentes');
 const listaTarefaAndamento = document.querySelector('.lista_tarefas_andamento');
 const listaTarefaFinalizada = document.querySelector('.lista_tarefas_finalizadas');
-
 let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
-let tarefaAndamento = JSON.parse(localStorage.getItem('tarefaPendente')) || [];
+let tarefaAndamento = JSON.parse(localStorage.getItem('tarefaAndamento')) || [];
+
 //ADICIONANDO E REMOVENDO A CLASSE "ATIVO" DO FORMULARIO DE NOVA TAREFA.
 btAddTarefa.addEventListener('click', ()=> {
     formulario.classList.toggle('ativo');    
@@ -44,8 +44,10 @@ function criarTarefa(tarefa){
             paragrafo.textContent = tarefaEditada;
             tarefa.descricao = tarefaEditada;
             atualizaFuncao();
-        }else{
+        }else if(tarefaEditada == ''){
             alert('digite algo.')
+        }else{
+            return;
         }
     }
 
@@ -69,7 +71,6 @@ btFormulario.addEventListener('click', ()=> {
         const tarefaPendente = criarTarefa(novaTarefa);
         listaTarefaPendente.append(tarefaPendente);
         atualizaFuncao();
-        
         formularioCampo.value = '';
         formulario.classList.remove('ativo');
 
@@ -85,7 +86,22 @@ tarefas.forEach(element => {
     }
 });
 
-listaTarefaAndamento.addEventListener('dragend', ()=> {
-    const textoDaTarefa = listaTarefaAndamento.querySelector('li p');
-    
+tarefaAndamento.forEach(element => {
+    if(element.status == 'andamento'){
+        const tarefasCriada = criarTarefa(element);
+        listaTarefaAndamento.append(tarefasCriada);
+    }
+});
+
+
+listaTarefaAndamento.addEventListener('dragend', ()=>{
+    const textoTarefa = listaTarefaAndamento.querySelector('li p');
+    const tarefaMovida = {
+       descricao : textoTarefa.textContent,
+       status : 'andamento'
+    }
+    tarefaAndamento.push(tarefaMovida);
+    localStorage.setItem('tarefaAndamento', JSON.stringify(tarefaAndamento))
 })
+
+

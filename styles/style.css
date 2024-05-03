@@ -76,7 +76,7 @@
   color: #695bad;
 }
 .formulario textarea {
-  max-width: 99%;
+  max-width: 40rem;
   height: 20rem;
   border: 1px solid #695bad;
   padding: 1rem;
