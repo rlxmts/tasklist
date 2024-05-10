@@ -111,26 +111,38 @@ tarefasConcluidas.forEach(element => {
 });
 
 
-listaTarefaAndamento.addEventListener('dragend', ()=>{
+listaTarefaAndamento.addEventListener('dragend', (e)=>{
     const textoTarefa = listaTarefaAndamento.querySelector('li p');
+    const confereTexto = tarefaAndamento.some( item => item.descricao === textoTarefa.textContent);
 
-        const tarefaMovida = {
-            descricao : textoTarefa.textContent,
-            status : 'andamento'
-        }
-        tarefaAndamento.push(tarefaMovida);
-        localStorage.setItem('tarefaAndamento', JSON.stringify(tarefaAndamento));    
+    if(confereTexto){
+        return;
+    }else{
+        console.log(confereTexto)
+            const tarefaMovida = {
+                descricao : textoTarefa.textContent,
+                status : 'andamento'
+            }
+            tarefaAndamento.push(tarefaMovida);
+            localStorage.setItem('tarefaAndamento', JSON.stringify(tarefaAndamento));    
+    }
 })
 
 
 listaTarefaFinalizada.addEventListener('dragend', ()=>{
     const tarefaFinalizada = listaTarefaFinalizada.querySelector('li p');
-    const tarefaMovida = {
-        descricao : tarefaFinalizada.textContent,
-        status: 'finalizada'
+    const confereTexto = tarefasConcluidas.some( item => item.descricao === tarefaFinalizada.textContent);
+
+    if(confereTexto){
+        return;
+    }else{
+        const tarefaMovida = {
+            descricao : tarefaFinalizada.textContent,
+            status: 'finalizada'
+        }
+        tarefasConcluidas.push(tarefaMovida);
+        localStorage.setItem('tarefasFinalizadas', JSON.stringify(tarefasConcluidas));
     }
-    tarefasConcluidas.push(tarefaMovida);
-    localStorage.setItem('tarefasFinalizadas', JSON.stringify(tarefasConcluidas));
 })
 
 
