@@ -112,34 +112,36 @@ tarefasConcluidas.forEach(element => {
 
 
 listaTarefaAndamento.addEventListener('dragend', (e)=>{
-    const textoTarefa = listaTarefaAndamento.querySelector('li p');
-    const confereTexto = tarefaAndamento.some( item => item.descricao === textoTarefa.textContent);
+    const li = e.target;
+    const textoTarefa = li.querySelector('p').textContent;  
+    const confereDuplicada = tarefaAndamento.some( item => item.descricao === textoTarefa);
 
-    if(confereTexto){
-        return;
-    }else{
-        console.log(confereTexto)
-            const tarefaMovida = {
-                descricao : textoTarefa.textContent,
-                status : 'andamento'
-            }
-            tarefaAndamento.push(tarefaMovida);
-            localStorage.setItem('tarefaAndamento', JSON.stringify(tarefaAndamento));    
-    }
-})
-
-
-listaTarefaFinalizada.addEventListener('dragend', ()=>{
-    const tarefaFinalizada = listaTarefaFinalizada.querySelector('li p');
-    const confereTexto = tarefasConcluidas.some( item => item.descricao === tarefaFinalizada.textContent);
-
-    if(confereTexto){
+    if(confereDuplicada){
         return;
     }else{
         const tarefaMovida = {
-            descricao : tarefaFinalizada.textContent,
-            status: 'finalizada'
+            descricao : textoTarefa,
+            status : 'andamento'
         }
+        tarefaAndamento.push(tarefaMovida);
+        localStorage.setItem('tarefaAndamento', JSON.stringify(tarefaAndamento));    
+    }
+    
+})
+
+
+listaTarefaFinalizada.addEventListener('dragend', (e)=>{
+    const li = e.target;
+    const tarefaFinalizada = li.querySelector('p').textContent; 
+    const confereDuplicada = tarefasConcluidas.some( item => item.descricao === tarefaFinalizada);
+
+    if(confereDuplicada){
+        return;
+    }else{
+        const tarefaMovida = {
+            descricao : tarefaFinalizada,
+            status: 'finalizada'
+        }        
         tarefasConcluidas.push(tarefaMovida);
         localStorage.setItem('tarefasFinalizadas', JSON.stringify(tarefasConcluidas));
     }
