@@ -10,9 +10,15 @@ document.addEventListener('dragend', (e)=> {
     e.target.classList.remove('arrastando');
 });
 
-caixasDraggble.forEach( coluna => {
-    coluna.addEventListener('dragover', ()=>{
-        const item = document.querySelector('.arrastando');
-        coluna.append(item);
-    });
+caixasDraggble.forEach( coluna => {    
+        coluna.addEventListener('dragover', ()=>{
+            const item = document.querySelector('.arrastando');
+            coluna.append(item);
+         });
 });
+
+listaTarefaAndamento.addEventListener('dragover', ()=>{    
+        const item = document.querySelector('.arrastando');
+        listaTarefaAndamento.append(item);
+})
+    

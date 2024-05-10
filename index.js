@@ -96,7 +96,9 @@ tarefaAndamento.forEach(element => {
     if(element.status == 'andamento' && element.excluir != true){
         const tarefasCriada = criarTarefa(element);
         listaTarefaAndamento.append(tarefasCriada);
-    }
+    }    
+    tarefaAndamento = tarefaAndamento.filter(element => !element.excluir) ;
+    atualizaFuncao();
 });
 
 tarefasConcluidas.forEach(element => {
@@ -104,17 +106,20 @@ tarefasConcluidas.forEach(element => {
         const tarefasCriada = criarTarefa(element);
         listaTarefaFinalizada.append(tarefasCriada);
     }
+    tarefasConcluidas = tarefasConcluidas.filter(element => !element.excluir) ;        
+    atualizaFuncao();
 });
 
 
 listaTarefaAndamento.addEventListener('dragend', ()=>{
     const textoTarefa = listaTarefaAndamento.querySelector('li p');
-    const tarefaMovida = {
-       descricao : textoTarefa.textContent,
-       status : 'andamento'
-    }
-    tarefaAndamento.push(tarefaMovida);
-    localStorage.setItem('tarefaAndamento', JSON.stringify(tarefaAndamento));
+
+        const tarefaMovida = {
+            descricao : textoTarefa.textContent,
+            status : 'andamento'
+        }
+        tarefaAndamento.push(tarefaMovida);
+        localStorage.setItem('tarefaAndamento', JSON.stringify(tarefaAndamento));    
 })
 
 
