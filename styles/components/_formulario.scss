@@ -42,3 +42,9 @@
     top: 8rem;
     transform: translateY(0px);
 }
+
+@media screen and (max-width: 668px) {
+    textarea{
+        width: 20rem;
+    }
+}

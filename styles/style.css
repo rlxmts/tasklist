@@ -99,6 +99,11 @@
   transform: translateY(0px);
 }
 
+@media screen and (max-width: 668px) {
+  textarea {
+    width: 20rem;
+  }
+}
 .colunas {
   display: flex;
   gap: 1rem;

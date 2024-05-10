@@ -1,24 +1,30 @@
 const btAddTarefa = document.querySelector('#bt-add-tarefa');
 const formulario = document.querySelector('.formulario');
 const btFormulario = document.querySelector('#bt-form');
+const btCancelar = document.querySelector('#bt-cancelar');
 const formularioCampo = document.querySelector('#campo-texto-tarefa');
 const listaTarefaPendente = document.querySelector('.lista_tarefas_pendentes');
 const listaTarefaAndamento = document.querySelector('.lista_tarefas_andamento');
 const listaTarefaFinalizada = document.querySelector('.lista_tarefas_finalizadas');
 let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
 let tarefaAndamento = JSON.parse(localStorage.getItem('tarefaAndamento')) || [];
+let tarefasConcluidas =JSON.parse(localStorage.getItem('tarefasFinalizadas')) || [];
 
-//ADICIONANDO E REMOVENDO A CLASSE "ATIVO" DO FORMULARIO DE NOVA TAREFA.
 btAddTarefa.addEventListener('click', ()=> {
     formulario.classList.toggle('ativo');    
 })
 
-//ESSA FUNÇÃO NA VERDADE ATUALIZA A LISTA DE TAREFAS NO LOCALSTORAGE SEM QUE INVOCADA. 
+btCancelar.addEventListener('click', () => {
+    formulario.classList.remove('ativo'); 
+})
+ 
 function atualizaFuncao(){
-    localStorage.setItem('tarefas', JSON.stringify(tarefas))
+    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+    localStorage.setItem('tarefaAndamento', JSON.stringify(tarefaAndamento));
+    localStorage.setItem('tarefasFinalizadas', JSON.stringify(tarefasConcluidas));
 }
 
-//ESSA FUNÇÃO CRIA O ITEM DA LISTA DE TAREFAS EM 'TAREAS PENDENTES', EXCLUI TAREFA SELECIONADA E EDITA;
+
 function criarTarefa(tarefa){
     const li = document.createElement('li');
     li.setAttribute('draggable', 'true');
@@ -87,9 +93,16 @@ tarefas.forEach(element => {
 });
 
 tarefaAndamento.forEach(element => {
-    if(element.status == 'andamento'){
+    if(element.status == 'andamento' && element.excluir != true){
         const tarefasCriada = criarTarefa(element);
         listaTarefaAndamento.append(tarefasCriada);
+    }
+});
+
+tarefasConcluidas.forEach(element => {
+    if(element.status == 'finalizada' && element.excluir != true){
+        const tarefasCriada = criarTarefa(element);
+        listaTarefaFinalizada.append(tarefasCriada);
     }
 });
 
@@ -101,7 +114,18 @@ listaTarefaAndamento.addEventListener('dragend', ()=>{
        status : 'andamento'
     }
     tarefaAndamento.push(tarefaMovida);
-    localStorage.setItem('tarefaAndamento', JSON.stringify(tarefaAndamento))
+    localStorage.setItem('tarefaAndamento', JSON.stringify(tarefaAndamento));
+})
+
+
+listaTarefaFinalizada.addEventListener('dragend', ()=>{
+    const tarefaFinalizada = listaTarefaFinalizada.querySelector('li p');
+    const tarefaMovida = {
+        descricao : tarefaFinalizada.textContent,
+        status: 'finalizada'
+    }
+    tarefasConcluidas.push(tarefaMovida);
+    localStorage.setItem('tarefasFinalizadas', JSON.stringify(tarefasConcluidas));
 })
 
 
