@@ -8,7 +8,7 @@ const listaTarefaAndamento = document.querySelector('.lista_tarefas_andamento');
 const listaTarefaFinalizada = document.querySelector('.lista_tarefas_finalizadas');
 let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
 let tarefaAndamento = JSON.parse(localStorage.getItem('tarefaAndamento')) || [];
-let tarefasConcluidas =JSON.parse(localStorage.getItem('tarefasFinalizadas')) || [];
+let tarefasFinalizadas =JSON.parse(localStorage.getItem('tarefasFinalizadas')) || [];
 
 btAddTarefa.addEventListener('click', ()=> {
     formulario.classList.toggle('ativo');    
@@ -21,14 +21,14 @@ btCancelar.addEventListener('click', () => {
 function atualizaFuncao(){
     localStorage.setItem('tarefas', JSON.stringify(tarefas));
     localStorage.setItem('tarefaAndamento', JSON.stringify(tarefaAndamento));
-    localStorage.setItem('tarefasFinalizadas', JSON.stringify(tarefasConcluidas));
+    localStorage.setItem('tarefasFinalizadas', JSON.stringify(tarefasFinalizadas));
 }
-
 
 function criarTarefa(tarefa){
     const li = document.createElement('li');
     li.setAttribute('draggable', 'true');
     li.classList.add('DragDropTouch');
+    li.classList.add('tarefas');
     const paragrafo = document.createElement('p');
     paragrafo.textContent = tarefa.descricao;
     const div = document.createElement('div');
@@ -101,12 +101,12 @@ tarefaAndamento.forEach(element => {
     atualizaFuncao();
 });
 
-tarefasConcluidas.forEach(element => {
+tarefasFinalizadas.forEach(element => {
     if(element.status == 'finalizada' && element.excluir != true){
         const tarefasCriada = criarTarefa(element);
         listaTarefaFinalizada.append(tarefasCriada);
     }
-    tarefasConcluidas = tarefasConcluidas.filter(element => !element.excluir) ;        
+    tarefasFinalizadas = tarefasFinalizadas.filter(element => !element.excluir) ;        
     atualizaFuncao();
 });
 
@@ -115,6 +115,9 @@ listaTarefaAndamento.addEventListener('dragend', (e)=>{
     const li = e.target;
     const textoTarefa = li.querySelector('p').textContent;  
     const confereDuplicada = tarefaAndamento.some( item => item.descricao === textoTarefa);
+    li.classList.remove('tarefas');
+    li.classList.remove('tarefasFinalizadas');
+    li.classList.add('tarefaAndamento');
 
     if(confereDuplicada){
         return;
@@ -133,8 +136,11 @@ listaTarefaAndamento.addEventListener('dragend', (e)=>{
 listaTarefaFinalizada.addEventListener('dragend', (e)=>{
     const li = e.target;
     const tarefaFinalizada = li.querySelector('p').textContent; 
-    const confereDuplicada = tarefasConcluidas.some( item => item.descricao === tarefaFinalizada);
-
+    const confereDuplicada = tarefasFinalizadas.some( item => item.descricao === tarefaFinalizada);
+    li.classList.remove('tarefas');
+    li.classList.remove('tarefaAndamento');
+    li.classList.add('tarefasFinalizadas');
+    
     if(confereDuplicada){
         return;
     }else{
@@ -142,9 +148,7 @@ listaTarefaFinalizada.addEventListener('dragend', (e)=>{
             descricao : tarefaFinalizada,
             status: 'finalizada'
         }        
-        tarefasConcluidas.push(tarefaMovida);
-        localStorage.setItem('tarefasFinalizadas', JSON.stringify(tarefasConcluidas));
+        tarefasFinalizadas.push(tarefaMovida);
+        localStorage.setItem('tarefasFinalizadas', JSON.stringify(tarefasFinalizadas));
     }
-})
-
-
+});
